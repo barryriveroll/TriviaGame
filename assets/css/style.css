@@ -33,3 +33,12 @@
 #score-div {
   display: none;
 }
+
+img {
+  width: 456px;
+}
+
+.score {
+  float: left;
+  width: 100%;
+}

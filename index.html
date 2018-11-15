@@ -27,8 +27,64 @@
           <h1 class="display-4 text-center">Trivia Game!</h1>
         </div>
       </header>
+      <div class="row mx-0">
+        <div class="col-md-12 rounded py-3 alert alert-dark">
+          <!--
+            <div class="category-buttons mb-2">
+              <button type="button" class="btn btn-secondary">
+                Category Name
+              </button>
+              <button type="button" class="btn btn-secondary">
+                Category Name
+              </button>
+              <button type="button" class="btn btn-secondary">
+                Category Name
+              </button>
+              <button type="button" class="btn btn-secondary">
+                Category Name
+              </button>
+            </div>
+          -->
+          <div class="progress">
+            <div
+              class="progress-bar bg-info"
+              role="progressbar"
+              style="width: 0%"
+              aria-valuenow="50"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+        </div>
+      </div>
       <div class="row">
-        <div class="col-md-10">
+        <div id="trivia-content" class="col-md-10">
+          <div
+            id="score-div"
+            class="row p-3 alert alert-dark mx-0 mb-2 rounded text-center"
+          >
+            <div class="col-md-12 display-4"><p>Score</p></div>
+            <div class="row">
+              <div class="col-md-6">
+                <div
+                  id="correct-score-div"
+                  class="score display-2 text-success text-center"
+                >
+                  0
+                </div>
+                Correct
+              </div>
+              <div class="col-md-6">
+                <div
+                  id="incorrect-score-div"
+                  class="score display-2 text-danger text-center"
+                >
+                  0
+                </div>
+                Incorrect
+              </div>
+            </div>
+          </div>
           <div class="row">
             <div class="col-md-12">
               <div
@@ -68,19 +124,12 @@
             </div>
           </div>
         </div>
-        <div class="col-md-2">
-          <div class="text-center p-3 bg-light rounded">
+        <div class="col-md-2 pl-0">
+          <div id="timer" class="text-center alert alert-info p-3 rounded">
             <p>Time Remaining</p>
             <div id="timer-div" class="display-2">30</div>
           </div>
           <br />
-          <div id="score-div" class="text-center p-3 bg-light rounded">
-            <p>Score</p>
-            <div id="correct-score-div" class="display-2 text-success">0</div>
-            Correct <br /><br />
-            <div id="incorrect-score-div" class="display-2 text-danger">0</div>
-            Wrong
-          </div>
         </div>
       </div>
     </div>
