@@ -1,0 +1,35 @@
+#question {
+  /* height: 200px; */
+  background: rgb(0, 29, 36);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 29, 36, 0.2945553221288515) 0%,
+    rgba(84, 161, 208, 1) 100%
+  );
+}
+
+.answer-div {
+  border: 1px solid black;
+  position: relative;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+.answer-div:hover {
+  cursor: pointer;
+}
+
+.answer-icon {
+  position: relative;
+  float: right;
+  font-size: 40px;
+  left: 9px;
+  top: -9px;
+  z-index: 1;
+}
+
+#score-div {
+  display: none;
+}

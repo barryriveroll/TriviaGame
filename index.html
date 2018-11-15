@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <title>Trivia!</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="jumbotron">
+          <h1 class="display-4 text-center">Trivia Game!</h1>
+        </div>
+      </header>
+      <div class="row">
+        <div class="col-md-10">
+          <div class="row">
+            <div class="col-md-12">
+              <div
+                id="question"
+                class="display-4 bg-info rounded p-3  text-center align-middle"
+              ></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-1">
+              <div
+                id="answers-0"
+                class="answer-div text-light bg-dark p-3 mt-2 rounded"
+                data-value="0"
+              ></div>
+              <i id="icon-0" class="answer-icon fas"></i>
+              <div
+                id="answers-1"
+                class="answer-div text-light bg-dark p-3 mt-2 rounded"
+                data-value="1"
+              ></div>
+              <i id="icon-1" class="answer-icon fas"></i>
+            </div>
+            <div class="col-md-6 pl-1">
+              <div
+                id="answers-2"
+                class="answer-div text-light bg-dark p-3 mt-2 rounded"
+                data-value="2"
+              ></div>
+              <i id="icon-2" class="answer-icon fas"></i>
+              <div
+                id="answers-3"
+                class="answer-div text-light bg-dark p-3 mt-2 rounded"
+                data-value="3"
+              ></div>
+              <i id="icon-3" class="answer-icon fas"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="text-center p-3 bg-light rounded">
+            <p>Time Remaining</p>
+            <div id="timer-div" class="display-2">30</div>
+          </div>
+          <br />
+          <div id="score-div" class="text-center p-3 bg-light rounded">
+            <p>Score</p>
+            <div id="correct-score-div" class="display-2 text-success">0</div>
+            Correct <br /><br />
+            <div id="incorrect-score-div" class="display-2 text-danger">0</div>
+            Wrong
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascript/app.js"></script>
+  </body>
+</html>
