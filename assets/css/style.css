@@ -1,11 +1,40 @@
 #question {
   /* height: 200px; */
   background: rgb(0, 29, 36);
-  background: linear-gradient(
-    0deg,
-    rgba(0, 29, 36, 0.2945553221288515) 0%,
-    rgba(84, 161, 208, 1) 100%
-  );
+}
+
+#trivia-div {
+  height: 0px;
+  overflow: hidden;
+}
+
+.buttons {
+  width: 308px;
+  margin: 5px auto;
+}
+
+.button-bg {
+  height: 0px;
+  margin-left: 8px;
+}
+
+.button-style {
+  width: 150px;
+  height: 80px;
+}
+
+#how-to-div {
+  height: 0px;
+  overflow: hidden;
+}
+
+#jumbo-div {
+  /* height: 400px; */
+}
+
+#landing-div {
+  /* height: 400px; */
+  overflow: hidden;
 }
 
 .answer-div {

@@ -23,8 +23,34 @@
   <body>
     <div class="container">
       <header>
-        <div class="jumbotron">
-          <h1 class="display-4 text-center">Trivia Game!</h1>
+        <div class="jumbotron" id="jumbo-div">
+          <h1 class="display-4 text-center">Trivia Game</h1>
+          <div id="landing-div">
+            <div class="buttons">
+              <button
+                type="button"
+                class="btn btn-primary button-style"
+                id="start-button"
+              >
+                Start Game
+              </button>
+              <div class="button-bg float-right rounded-top bg-primary">
+                <button
+                  type="button"
+                  class="btn btn-primary button-style"
+                  id="how-to-button"
+                >
+                  How to Play
+                </button>
+              </div>
+            </div>
+            <div id="how-to-div" class="bg-primary text-white mt-2 rounded">
+              <div class="how-to-content p-3">
+                <p>How to Play</p>
+                <p>30 seconds to answer the questions</p>
+              </div>
+            </div>
+          </div>
         </div>
       </header>
       <div class="row mx-0">
@@ -57,7 +83,8 @@
           </div>
         </div>
       </div>
-      <div class="row">
+
+      <div class="row" id="trivia-div">
         <div id="trivia-content" class="col-md-10">
           <div
             id="score-div"
