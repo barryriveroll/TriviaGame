@@ -9,13 +9,29 @@
 }
 
 .buttons {
-  width: 308px;
+  width: 312px;
   margin: 5px auto;
 }
 
-.button-bg {
+#button-bg {
   height: 0px;
+  width: 150px;
   margin-left: 8px;
+  z-index: 2;
+  background: grey;
+  top: 0;
+  right: 4px;
+  overflow: hidden;
+  line-height: 1.8;
+  font-size: 40px;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+#button-bg:hover {
+  cursor: pointer;
 }
 
 .button-style {
@@ -26,14 +42,10 @@
 #how-to-div {
   height: 0px;
   overflow: hidden;
-}
-
-#jumbo-div {
-  /* height: 400px; */
+  background: grey;
 }
 
 #landing-div {
-  /* height: 400px; */
   overflow: hidden;
 }
 

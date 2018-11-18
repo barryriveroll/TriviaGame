@@ -26,28 +26,39 @@
         <div class="jumbotron" id="jumbo-div">
           <h1 class="display-4 text-center">Trivia Game</h1>
           <div id="landing-div">
-            <div class="buttons">
+            <div class="buttons position-relative">
               <button
                 type="button"
-                class="btn btn-primary button-style"
+                class="btn btn-primary button-style mr-1"
                 id="start-button"
               >
                 Start Game
               </button>
-              <div class="button-bg float-right rounded-top bg-primary">
-                <button
-                  type="button"
-                  class="btn btn-primary button-style"
-                  id="how-to-button"
-                >
-                  How to Play
-                </button>
+              <div
+                id="button-bg"
+                class="float-right rounded-top position-absolute text-center"
+              >
+                x
               </div>
+              <button
+                type="button"
+                class="btn btn-primary button-style"
+                id="how-to-button"
+              >
+                How to Play
+              </button>
             </div>
-            <div id="how-to-div" class="bg-primary text-white mt-2 rounded">
+            <div id="how-to-div" class="mt-2 rounded text-white">
               <div class="how-to-content p-3">
-                <p>How to Play</p>
-                <p>30 seconds to answer the questions</p>
+                <p class="display-4">How to Play</p>
+                <ol>
+                  <li>All questions are TV show related</li>
+                  <li>You have 30 seconds per question to pick your answer</li>
+                  <li>The progress bar fills up as you answer questions</li>
+                  <li>The correct answer will be shown to you</li>
+                  <li>Your final score will be displayed at the end</li>
+                </ol>
+                <p>Good luck!</p>
               </div>
             </div>
           </div>
@@ -55,22 +66,7 @@
       </header>
       <div class="row mx-0">
         <div class="col-md-12 rounded py-3 alert alert-dark">
-          <!--
-            <div class="category-buttons mb-2">
-              <button type="button" class="btn btn-secondary">
-                Category Name
-              </button>
-              <button type="button" class="btn btn-secondary">
-                Category Name
-              </button>
-              <button type="button" class="btn btn-secondary">
-                Category Name
-              </button>
-              <button type="button" class="btn btn-secondary">
-                Category Name
-              </button>
-            </div>
-          -->
+          <em><p>Progress</p></em>
           <div class="progress">
             <div
               class="progress-bar bg-info"

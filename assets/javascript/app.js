@@ -2,6 +2,7 @@ var intervalId;
 
 var game = {
   canClick: true,
+  howToToggle: false,
   gameStart: false,
   correct: 0,
   incorrect: 0,
@@ -76,11 +77,10 @@ var game = {
     }
   ],
   questionsDuplicate: [],
-  dataValues: [0, 1, 2, 3],
   questionTimeMax: 30,
   questionTimeCurrent: 0,
   answerGif: "",
-  divSize: 300,
+  divSize: 280,
   buttonResize: 88,
   answerDivs: [
     $("#answers-0"),
@@ -89,10 +89,9 @@ var game = {
     $("#answers-3")
   ],
   correctDiv: $(""),
-  iconDivs: [$("#icon-0"), $("#icon-1"), $("#icon-2"), $("#icon-3")],
+  // iconDivs: [$("#icon-0"), $("#icon-1"), $("#icon-2"), $("#icon-3")],
 
-  newQuestion: function() {
-    var questionIndex = Math.floor(Math.random() * this.questions.length);
+  resetDivs: function() {
     $("#timer").removeClass("alert-warning alert-danger");
     $(".answer-div")
       .removeClass("bg-secondary")
@@ -100,6 +99,21 @@ var game = {
       .removeClass("bg-success")
       .removeClass("bg-danger")
       .addClass("bg-dark");
+  },
+
+  cloneArrays: function() {
+    game.questions = JSON.parse(JSON.stringify(game.questionsDuplicate));
+
+    for (var i = 0; i < game.questions.length; i++) {
+      game.questions[i] = JSON.parse(
+        JSON.stringify(game.questionsDuplicate[i])
+      );
+    }
+  },
+
+  newQuestion: function() {
+    var questionIndex = Math.floor(Math.random() * this.questions.length);
+    this.resetDivs();
     $("#question").html(this.questions[questionIndex].questionText);
     for (var i = 0; i < 4; i++) {
       var answerDiv = Math.floor(
@@ -190,8 +204,14 @@ var game = {
   },
 
   newGame: function() {
-    game.questions = game.questionsDuplicate.slice();
+    if (this.howToToggle) {
+      this.toggleHowTo();
+    }
+    this.cloneArrays();
+    this.resetDivs();
     this.canClick = true;
+    this.correct = 0;
+    this.incorrect = 0;
     game.newQuestion();
     $("#trivia-div").show();
     $("#trivia-content")
@@ -202,12 +222,13 @@ var game = {
     $("#trivia-div").animate({ height: "600px" }, "fast");
     $(".progress-bar").css(
       "width",
-      ((game.correct + game.incorrect) / game.maxQuestions) * 100 + "%"
+      ((this.correct + this.incorrect) / this.maxQuestions) * 100 + "%"
     );
   },
 
   endGame: function() {
-    $("#landing-div").animate({ height: "88px" }, "fast");
+    // $("#landing-div").animate({ height: "88px" }, "fast");
+    $("#landing-div").css("height", "inherit");
     $("#trivia-div").animate({ height: "400px" }, "fast");
     $("#correct-score-div").text(this.correct);
     $("#incorrect-score-div").text(this.incorrect);
@@ -216,13 +237,39 @@ var game = {
       .hide();
     $("#score-div").css("display", "block");
     $("#score-div").show();
+  },
+
+  toggleHowTo: function() {
+    $("#button-bg").animate({ height: "+=" + game.buttonResize + "px" }, 100);
+    setTimeout(function() {
+      $("#how-to-div").animate({ height: "+=" + game.divSize + "px" }, "fast");
+      game.divSize *= -1;
+      game.buttonResize *= -1;
+      game.howToToggle = !game.howToToggle;
+    }, 0);
   }
 };
 
 function init() {
   game.maxQuestions = game.questions.length;
   $("#trivia-div").hide();
-  game.questionsDuplicate = game.questions.slice();
+  // game.questionsDuplicate = $.extend(true, [], game.questions);
+  // game.questionsDuplicate = game.questions.slice();
+  game.questionsDuplicate = JSON.parse(JSON.stringify(game.questions));
+
+  for (var i = 0; i < game.questions.length; i++) {
+    game.questionsDuplicate[i] = JSON.parse(JSON.stringify(game.questions[i]));
+    //   game.questionsDuplicate[i].answers = $.extend(
+    //     true,
+    //     [],
+    //     game.questions[i].answers
+    //   );
+    //   game.questionsDuplicate[i].values = $.extend(
+    //     true,
+    //     [],
+    //     game.questions[i].values
+    //   );
+  }
 }
 
 $(document).ready(function() {
@@ -230,34 +277,30 @@ $(document).ready(function() {
 
   $("#start-button").on("click", function() {
     game.newGame();
-    $(".answer-div").on("click", function() {
-      if (game.canClick) {
-        if ($(this).hasClass("answer-chosen-div")) {
-          game.endQuestion($(this).attr("data-value"), $(this));
-        } else {
-          //   game.iconDivs[$(this).index()].addClass("fa-question-circle");
-          console.log($(this).index());
-          $(".answer-div")
-            .removeClass("bg-secondary")
-            .removeClass("answer-chosen-div")
-            .addClass("bg-dark");
-          $(".answer-icon").remove();
-          $(this)
-            .removeClass("bg-dark")
-            .addClass("bg-secondary")
-            .addClass("answer-chosen-div")
-            .append(
-              '<i id="icon-1" class="answer-icon fas fa-question-circle"></i>'
-            );
-        }
-      }
-    });
   });
 
-  $("#how-to-button").on("click", function() {
-    $("#how-to-div").animate({ height: "+=" + game.divSize + "px" }, "fast");
-    $(".button-bg").animate({ height: "+=" + game.buttonResize + "px" }, 0);
-    game.divSize *= -1;
-    game.buttonResize *= -1;
+  $(".answer-div").on("click", function() {
+    if (game.canClick) {
+      if ($(this).hasClass("answer-chosen-div")) {
+        game.endQuestion($(this).attr("data-value"), $(this));
+      } else {
+        //   game.iconDivs[$(this).index()].addClass("fa-question-circle");
+        console.log($(this).index());
+        $(".answer-div")
+          .removeClass("bg-secondary")
+          .removeClass("answer-chosen-div")
+          .addClass("bg-dark");
+        $(".answer-icon").remove();
+        $(this)
+          .removeClass("bg-dark")
+          .addClass("bg-secondary")
+          .addClass("answer-chosen-div")
+          .append(
+            '<i id="icon-1" class="answer-icon fas fa-question-circle"></i>'
+          );
+      }
+    }
   });
+
+  $(".buttons").on("click", "#button-bg, #how-to-button", game.toggleHowTo);
 });
