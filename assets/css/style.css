@@ -1,5 +1,4 @@
 #question {
-  /* height: 200px; */
   background: rgb(0, 29, 36);
 }
 
@@ -8,9 +7,18 @@
   overflow: hidden;
 }
 
+.title {
+  text-shadow: 2px 2px 2px #292828;
+  font-weight: 650;
+}
+
 .buttons {
   width: 312px;
   margin: 5px auto;
+}
+
+#jumbo-div {
+  background: url(../images/header-bg.jpg) center 10% !important;
 }
 
 #button-bg {
@@ -18,16 +26,25 @@
   width: 150px;
   margin-left: 8px;
   z-index: 2;
-  background: grey;
+  background: #343a40;
+  color: white;
   top: 0;
   right: 4px;
   overflow: hidden;
-  line-height: 1.8;
+  line-height: 2;
   font-size: 40px;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
+}
+
+#how-to-image {
+  margin: 20px;
+  float: right;
+  height: 280px;
+  width: auto;
+  box-shadow: inset 23px 0px 50px -10px #ffffff;
 }
 
 #button-bg:hover {
@@ -42,7 +59,13 @@
 #how-to-div {
   height: 0px;
   overflow: hidden;
-  background: grey;
+  background: linear-gradient(
+    180deg,
+    rgba(52, 58, 64, 1) 0%,
+    rgba(43, 43, 43, 0.7931547619047619) 34%,
+    rgba(0, 0, 0, 0.31416316526610644) 67%
+  );
+  text-shadow: 2px 2px 2px black;
 }
 
 #landing-div {

@@ -103,12 +103,6 @@ var game = {
 
   cloneArrays: function() {
     game.questions = JSON.parse(JSON.stringify(game.questionsDuplicate));
-
-    for (var i = 0; i < game.questions.length; i++) {
-      game.questions[i] = JSON.parse(
-        JSON.stringify(game.questionsDuplicate[i])
-      );
-    }
   },
 
   newQuestion: function() {
@@ -207,12 +201,12 @@ var game = {
     if (this.howToToggle) {
       this.toggleHowTo();
     }
-    this.cloneArrays();
+    this.questions = JSON.parse(JSON.stringify(this.questionsDuplicate));
     this.resetDivs();
     this.canClick = true;
     this.correct = 0;
     this.incorrect = 0;
-    game.newQuestion();
+    this.newQuestion();
     $("#trivia-div").show();
     $("#trivia-content")
       .children()
@@ -220,6 +214,11 @@ var game = {
     $("#score-div").hide();
     $("#landing-div").animate({ height: "0px" }, "fast");
     $("#trivia-div").animate({ height: "600px" }, "fast");
+
+    setTimeout(function() {
+      $("#trivia-div").css("height", "inherit");
+    }, 300);
+
     $(".progress-bar").css(
       "width",
       ((this.correct + this.incorrect) / this.maxQuestions) * 100 + "%"
@@ -227,7 +226,6 @@ var game = {
   },
 
   endGame: function() {
-    // $("#landing-div").animate({ height: "88px" }, "fast");
     $("#landing-div").css("height", "inherit");
     $("#trivia-div").animate({ height: "400px" }, "fast");
     $("#correct-score-div").text(this.correct);
@@ -246,30 +244,14 @@ var game = {
       game.divSize *= -1;
       game.buttonResize *= -1;
       game.howToToggle = !game.howToToggle;
-    }, 0);
+    }, 100);
   }
 };
 
 function init() {
   game.maxQuestions = game.questions.length;
   $("#trivia-div").hide();
-  // game.questionsDuplicate = $.extend(true, [], game.questions);
-  // game.questionsDuplicate = game.questions.slice();
   game.questionsDuplicate = JSON.parse(JSON.stringify(game.questions));
-
-  for (var i = 0; i < game.questions.length; i++) {
-    game.questionsDuplicate[i] = JSON.parse(JSON.stringify(game.questions[i]));
-    //   game.questionsDuplicate[i].answers = $.extend(
-    //     true,
-    //     [],
-    //     game.questions[i].answers
-    //   );
-    //   game.questionsDuplicate[i].values = $.extend(
-    //     true,
-    //     [],
-    //     game.questions[i].values
-    //   );
-  }
 }
 
 $(document).ready(function() {
@@ -284,8 +266,6 @@ $(document).ready(function() {
       if ($(this).hasClass("answer-chosen-div")) {
         game.endQuestion($(this).attr("data-value"), $(this));
       } else {
-        //   game.iconDivs[$(this).index()].addClass("fa-question-circle");
-        console.log($(this).index());
         $(".answer-div")
           .removeClass("bg-secondary")
           .removeClass("answer-chosen-div")
